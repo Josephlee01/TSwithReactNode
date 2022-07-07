@@ -1,7 +1,10 @@
+type Combinable = number|string;
+type Conversion = 'as-number' | 'as-text'
+
 function combine(
-  input1: number | string,
-  input2: number | string,
-  resultConversion: 'as-number' | 'as-text'
+  input1: Combinable,
+  input2: Combinable,
+  resultConversion: Conversion
 ) {
   let result;
   if (typeof input1 === "number" && typeof input2 === "number" || resultConversion === "as-number")
@@ -11,7 +14,7 @@ function combine(
     result = input1.toString() + input2.toString();
   }
   return result
-  
+
   // if (resultConversion==="as-number"){
   //   return +result // result를 정수형(int)으로 변환
   // } else {
