@@ -1,1 +1,1 @@
-console.log('Sending analytics.ts ...')
+console.log('Sending from analytics.ts ...')

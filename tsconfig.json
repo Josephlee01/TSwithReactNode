@@ -99,5 +99,13 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "exclude": [
+    "node_modules",  // 기본적으로 제외됨
+    "exclude.ts"
+  ],
+  "include": [
+    "app.ts", // 기본적으로 포함됨.
+    "analytics.ts"
+  ]
 }
