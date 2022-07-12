@@ -1,12 +1,7 @@
-let num :number
-num=5
-const userName = "Joseph"
+function add(a:number,b:number){
+  let result
+  result = a+b
+  return result
+}
 
-const button = document.querySelector('button')!;
-
-button.addEventListener('click', () => {
-  console.log('Clicked!')
-})
-
-
-console.log('Sending from app.ts ...')
+// console.log(result)
