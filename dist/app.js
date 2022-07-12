@@ -8,13 +8,16 @@ if (button) {
 }
 printOutput(add(5, 2));
 printOutput(add(5));
-const countries = ['Guatemala', 'Peru'];
-const activeCountries = ['Mexico'];
+const countries = ["Guatemala", "Peru"];
+const activeCountries = ["Mexico"];
 activeCountries.push(...countries);
 console.log(activeCountries);
 const person = {
     name: "Joseph",
-    gender: "Male"
+    gender: "Male",
 };
 const copiedPerson = Object.assign(Object.assign({}, person), { age: 35 });
 console.log(copiedPerson);
+const plus = (...nums) => nums.reduce((currentResult, currentValue) => currentResult + currentValue, 0);
+const addedNums = plus(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+console.log(addedNums);
