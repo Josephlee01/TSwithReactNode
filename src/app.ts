@@ -5,17 +5,14 @@
 // }
 // console.log(result)
 
-
-
-
-
 // Arrow Func.
 
 // const add = (a:number,b:number) => {
 //   return a+b
 // }
 
-const add = (a: number, b: number) => a + b;
+const add = (a: number, b: number = 1) => a + b;
+// 기본값은 두번째에만 설정 가능.
 
 console.log(add(2, 8));
 
@@ -30,3 +27,4 @@ if (button) {
 }
 
 printOutput(add(5, 2));
+printOutput(add(5));
