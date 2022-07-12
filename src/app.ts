@@ -28,3 +28,23 @@ if (button) {
 
 printOutput(add(5, 2));
 printOutput(add(5));
+
+//
+const countries = ['Guatemala', 'Peru']
+const activeCountries = ['Mexico']
+
+activeCountries.push(...countries)
+
+console.log(activeCountries)
+
+//
+const person = {
+  name: "Joseph",
+  gender: "Male"
+}
+
+const copiedPerson = {...person, age:35}
+
+console.log(copiedPerson)
+
+//
