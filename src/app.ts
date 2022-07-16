@@ -30,12 +30,17 @@ printOutput(add(5, 2));
 printOutput(add(5));
 
 //
-const countries = ["Guatemala", "Peru"];
+const countries = ["Guatemala", "Peru", "Kenya"];
 const activeCountries = ["Mexico"];
 
 activeCountries.push(...countries);
 
 console.log(activeCountries);
+
+const [country1, country2, ...etc] = activeCountries;
+
+console.log(country1, country2);
+console.log(etc);
 
 //
 const person = {
@@ -46,6 +51,8 @@ const person = {
 const copiedPerson = { ...person, age: 35 };
 
 console.log(copiedPerson);
+const { name: userName, gender, age } = copiedPerson;
+console.log(userName, age);
 
 //
 const plus = (...nums: number[]) =>
