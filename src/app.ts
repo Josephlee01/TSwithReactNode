@@ -18,6 +18,13 @@ class Department {
   }
 }
 
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, "IT")
+
+  }
+}
+
 const accounting = new Department("D1", "Accounting");
 accounting.addEmployee("Max");
 accounting.addEmployee("Joe");
@@ -28,3 +35,10 @@ accounting.printEmployeeInfo();
 
 // const accountingCopy = { name: "Dummy", describe: accounting.describe };
 // accountingCopy.describe();
+
+const it = new ITDepartment("A2", ["Brian", "Danny"])
+it.addEmployee("Chris")
+it.addEmployee("Kelly")
+it.addEmployee("Elle")
+
+console.log(it)
