@@ -17,9 +17,23 @@ class Department {
     }
 }
 class ITDepartment extends Department {
-    constructor(id, admins) {
+    constructor(id, admins, reports) {
         super(id, "IT");
         this.admins = admins;
+        this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error("No report found.");
+    }
+    set mostRecentReport(value) {
+        if (!value) {
+            throw new Error('Please pass in a valid value.');
+        }
+        this.addReport(value);
     }
     addEmployee(name) {
         if (name === "Kelly") {
@@ -27,13 +41,20 @@ class ITDepartment extends Department {
         }
         this.employees.push(name);
     }
+    addReport(text) {
+        this.reports.push(text);
+        this.lastReport = text;
+    }
 }
 const accounting = new Department("D1", "Accounting");
 accounting.addEmployee("Max");
 accounting.addEmployee("Joe");
 accounting.describe();
 accounting.printEmployeeInfo();
-const it = new ITDepartment("A2", ["Brian", "Danny"]);
+const it = new ITDepartment("A2", ["Brian", "Danny"], []);
+it.mostRecentReport = 'Report by setter';
+it.addReport("Report 1");
+console.log(it.mostRecentReport);
 it.addEmployee("Chris");
 it.addEmployee("Kelly");
 it.addEmployee("Elle");

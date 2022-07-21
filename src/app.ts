@@ -19,16 +19,39 @@ class Department {
 }
 
 class ITDepartment extends Department {
-  constructor(id: string, public admins: string[]) {
-    super(id, "IT")
+  private lastReport: string;
+
+  get mostRecentReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error("No report found.");
   }
+
+  set mostRecentReport(value:string){
+    if(!value){
+      throw new Error('Please pass in a valid value.')
+    }
+    this.addReport(value)
+  }
+
+  constructor(id: string, public admins: string[], public reports: string[]) {
+    super(id, "IT");
+    this.lastReport = reports[0];
+  }
+
   addEmployee(name: string): void {
-    if(name==="Kelly"){
+    if (name === "Kelly") {
       return;
     }
-    // this.employees.push(name) 
+    // this.employees.push(name)
     // private이면 실행 불가. but protected에서는 extends에서 접근가능함.
-    this.employees.push(name)
+    this.employees.push(name);
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+    this.lastReport = text;
   }
 }
 
@@ -43,9 +66,13 @@ accounting.printEmployeeInfo();
 // const accountingCopy = { name: "Dummy", describe: accounting.describe };
 // accountingCopy.describe();
 
-const it = new ITDepartment("A2", ["Brian", "Danny"])
-it.addEmployee("Chris")
-it.addEmployee("Kelly") // 추가되지 않음. Ln 25-31
-it.addEmployee("Elle")
+const it = new ITDepartment("A2", ["Brian", "Danny"], []);
+it.mostRecentReport = 'Report by setter'
+it.addReport("Report 1");
+console.log(it.mostRecentReport);
 
-console.log(it)
+it.addEmployee("Chris");
+it.addEmployee("Kelly"); // 추가되지 않음. Ln 25-31
+it.addEmployee("Elle");
+
+console.log(it);
