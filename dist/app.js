@@ -21,6 +21,12 @@ class ITDepartment extends Department {
         super(id, "IT");
         this.admins = admins;
     }
+    addEmployee(name) {
+        if (name === "Kelly") {
+            return;
+        }
+        this.employees.push(name);
+    }
 }
 const accounting = new Department("D1", "Accounting");
 accounting.addEmployee("Max");
