@@ -5,12 +5,6 @@ class Department {
         this.name = name;
         this.employees = [];
     }
-    static createEmployee(name) {
-        return { name };
-    }
-    describe() {
-        console.log(`Department: [${this.id}] ${this.name} `);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -18,8 +12,23 @@ class Department {
         console.log(this.employees.length);
         console.log(this.employees);
     }
+    static createEmployee(name) {
+        return { name };
+    }
 }
 Department.fiscalYear = 2022;
+const employee1 = Department.createEmployee("Smith");
+console.log(employee1, Department.fiscalYear);
+class accountingDepartment extends Department {
+    describe() {
+        console.log("Accountind Department - ID: " + this.id);
+    }
+}
+const accounting = new accountingDepartment("D1", "Accounting Department");
+accounting.addEmployee("Max");
+accounting.addEmployee("Joe");
+accounting.describe();
+accounting.printEmployeeInfo();
 class ITDepartment extends Department {
     constructor(id, admins, reports) {
         super(id, "IT");
@@ -39,6 +48,9 @@ class ITDepartment extends Department {
         }
         this.addReport(value);
     }
+    describe() {
+        console.log("IT Department - ID: " + this.id);
+    }
     addEmployee(name) {
         if (name === "Kelly") {
             return;
@@ -50,13 +62,6 @@ class ITDepartment extends Department {
         this.lastReport = text;
     }
 }
-const employee1 = Department.createEmployee("Smith");
-console.log(employee1, Department.fiscalYear);
-const accounting = new Department("D1", "Accounting");
-accounting.addEmployee("Max");
-accounting.addEmployee("Joe");
-accounting.describe();
-accounting.printEmployeeInfo();
 const it = new ITDepartment("A2", ["Brian", "Danny"], []);
 it.mostRecentReport = "Report by setter";
 it.addReport("Report 1");
@@ -65,3 +70,4 @@ it.addEmployee("Chris");
 it.addEmployee("Kelly");
 it.addEmployee("Elle");
 console.log(it);
+it.describe();
