@@ -5,6 +5,9 @@ class Department {
         this.name = name;
         this.employees = [];
     }
+    static createEmployee(name) {
+        return { name };
+    }
     describe() {
         console.log(`Department: [${this.id}] ${this.name} `);
     }
@@ -16,6 +19,7 @@ class Department {
         console.log(this.employees);
     }
 }
+Department.fiscalYear = 2022;
 class ITDepartment extends Department {
     constructor(id, admins, reports) {
         super(id, "IT");
@@ -31,7 +35,7 @@ class ITDepartment extends Department {
     }
     set mostRecentReport(value) {
         if (!value) {
-            throw new Error('Please pass in a valid value.');
+            throw new Error("Please pass in a valid value.");
         }
         this.addReport(value);
     }
@@ -46,13 +50,15 @@ class ITDepartment extends Department {
         this.lastReport = text;
     }
 }
+const employee1 = Department.createEmployee("Smith");
+console.log(employee1, Department.fiscalYear);
 const accounting = new Department("D1", "Accounting");
 accounting.addEmployee("Max");
 accounting.addEmployee("Joe");
 accounting.describe();
 accounting.printEmployeeInfo();
 const it = new ITDepartment("A2", ["Brian", "Danny"], []);
-it.mostRecentReport = 'Report by setter';
+it.mostRecentReport = "Report by setter";
 it.addReport("Report 1");
 console.log(it.mostRecentReport);
 it.addEmployee("Chris");

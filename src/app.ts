@@ -6,6 +6,13 @@ class Department {
   constructor(private readonly id: string, public name: string) {
     // this.name = n;
   }
+
+  // static -> class 외부에서 접근 가능.
+  static fiscalYear = 2022;
+  static createEmployee(name: string) {
+    return { name };
+  }
+
   describe(this: Department) {
     console.log(`Department: [${this.id}] ${this.name} `);
   }
@@ -28,11 +35,11 @@ class ITDepartment extends Department {
     throw new Error("No report found.");
   }
 
-  set mostRecentReport(value:string){
-    if(!value){
-      throw new Error('Please pass in a valid value.')
+  set mostRecentReport(value: string) {
+    if (!value) {
+      throw new Error("Please pass in a valid value.");
     }
-    this.addReport(value)
+    this.addReport(value);
   }
 
   constructor(id: string, public admins: string[], public reports: string[]) {
@@ -55,7 +62,12 @@ class ITDepartment extends Department {
   }
 }
 
+//static method 사용 시 class 이름 꼭 사용해야함.
+const employee1 = Department.createEmployee("Smith");
+console.log(employee1, Department.fiscalYear);
+
 const accounting = new Department("D1", "Accounting");
+
 accounting.addEmployee("Max");
 accounting.addEmployee("Joe");
 // accounting.employees[2] = 'Manu' => private이기 때문에 추가안됨.
@@ -67,7 +79,7 @@ accounting.printEmployeeInfo();
 // accountingCopy.describe();
 
 const it = new ITDepartment("A2", ["Brian", "Danny"], []);
-it.mostRecentReport = 'Report by setter'
+it.mostRecentReport = "Report by setter";
 it.addReport("Report 1");
 console.log(it.mostRecentReport);
 
