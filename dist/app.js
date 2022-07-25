@@ -48,6 +48,13 @@ class ITDepartment extends Department {
         }
         this.addReport(value);
     }
+    static getInstance() {
+        if (ITDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new ITDepartment("A2", ["Andy", "Molten"], []);
+        return this.instance;
+    }
     describe() {
         console.log("IT Department - ID: " + this.id);
     }
@@ -62,7 +69,7 @@ class ITDepartment extends Department {
         this.lastReport = text;
     }
 }
-const it = new ITDepartment("A2", ["Brian", "Danny"], []);
+const it = ITDepartment.getInstance();
 it.mostRecentReport = "Report by setter";
 it.addReport("Report 1");
 console.log(it.mostRecentReport);

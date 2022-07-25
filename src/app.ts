@@ -32,8 +32,6 @@ console.log(employee1, Department.fiscalYear);
 // const Operation = new Department("C3", "Operation Department");
 // abstract class에서는 new로 새로운 인스턴스 생성 불가!
 
-
-
 class accountingDepartment extends Department {
   describe() {
     console.log("Accountind Department - ID: " + this.id); // id -> protected로 해야 접근가능.
@@ -44,7 +42,7 @@ const accounting = new accountingDepartment("D1", "Accounting Department");
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Joe");
-// accounting.employees[2] = 'Manu' 
+// accounting.employees[2] = 'Manu'
 // employees가 private, protected 이기 때문에 추가 안됨.
 
 accounting.describe();
@@ -53,9 +51,9 @@ accounting.printEmployeeInfo();
 // const accountingCopy = { name: "Dummy", describe: accounting.describe };
 // accountingCopy.describe();
 
-
 class ITDepartment extends Department {
   private lastReport: string;
+  private static instance: ITDepartment;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -71,9 +69,21 @@ class ITDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, public admins: string[], public reports: string[]) {
+  private constructor(
+    id: string,
+    public admins: string[],
+    public reports: string[]
+  ) {
     super(id, "IT");
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if (ITDepartment.instance) {
+      return this.instance;
+    }
+    this.instance = new ITDepartment("A2", ["Andy", "Molten"], []);
+    return this.instance;
   }
 
   describe() {
@@ -95,8 +105,9 @@ class ITDepartment extends Department {
   }
 }
 
+// const it = new ITDepartment("A2", ["Brian", "Danny"], []);
+const it = ITDepartment.getInstance();
 
-const it = new ITDepartment("A2", ["Brian", "Danny"], []);
 it.mostRecentReport = "Report by setter";
 it.addReport("Report 1");
 console.log(it.mostRecentReport);
