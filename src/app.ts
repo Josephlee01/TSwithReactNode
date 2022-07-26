@@ -1,17 +1,21 @@
-interface Greetable {
-  readonly name: string;
+interface Named {
+  readonly name: string
+}
 
-  // interface는 implements에 greet() 가 있어야 함을 강제함.
+// 두개의 interface 병합 가능
+interface Greetable extends Named {
+
   greet(phrase: string): void;
 }
 
 class Person implements Greetable {
   name: string;
   age= 35;
-
+  
   constructor(n:string) {
     this.name= n
   }
+  // interface는 implements에 greet() 가 있어야 함을 강제함.
   greet(phrase:string) {
     console.log(phrase + "" + this.name);
   }
