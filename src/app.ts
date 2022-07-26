@@ -1,6 +1,6 @@
 interface Greetable {
-  name: string;
-  
+  readonly name: string;
+
   // interface는 implements에 greet() 가 있어야 함을 강제함.
   greet(phrase: string): void;
 }
@@ -20,6 +20,8 @@ class Person implements Greetable {
 let user1: Greetable;
 
 user1 = new Person("Joe")
+// user1.name = 'Henry' 
+// ⬆️ readonly이기 때문에 불가능
 
 user1.greet('Hi there, ')
 console.log(user1)
