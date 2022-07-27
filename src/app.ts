@@ -1,6 +1,6 @@
 // type addFn = (a: number, b: number) => number;
 interface addFn {
-  (a: number, b: number): number
+  (a: number, b: number): number;
 }
 
 let add: addFn;
@@ -10,7 +10,8 @@ add = (n1, n2) => {
 };
 
 interface Named {
-  readonly name: string;
+  readonly name?: string;
+  outputName?: string;
 }
 
 // 두개의 interface 병합 가능
@@ -19,11 +20,13 @@ interface Greetable extends Named {
 }
 
 class Person implements Greetable {
-  name: string;
+  name?: string;
   age = 35;
 
   constructor(n: string) {
-    this.name = n;
+    if (n) {
+      this.name = n;
+    }
   }
   // interface는 implements에 greet() 가 있어야 함을 강제함.
   greet(phrase: string) {
