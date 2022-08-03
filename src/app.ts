@@ -87,9 +87,7 @@ function useVehicle(vehicle: Vehicle) {
 useVehicle(car1);
 useVehicle(car2);
 
-
 //using interface
-
 interface Bird {
   type: "bird";
   flyingSpeed: number;
@@ -117,3 +115,13 @@ moveAnimal({
   type: "bird",
   flyingSpeed: 100,
 });
+
+const paragraph = <HTMLParagraphElement>(
+  document.getElementById("message-output")
+);
+// react jsx와 충돌 가능성 있음. so,
+const userInputElement = document.getElementById(
+  "user-input"!
+) as HTMLInputElement;
+
+userInputElement.placeholder = "Input Value here";

@@ -58,3 +58,6 @@ moveAnimal({
     type: "bird",
     flyingSpeed: 100,
 });
+const paragraph = (document.getElementById("message-output"));
+const userInputElement = document.getElementById("user-input");
+userInputElement.placeholder = "Input Value here";
