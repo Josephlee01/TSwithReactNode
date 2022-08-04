@@ -47,8 +47,7 @@ function add(a: Combinable, b: Combinable) {
 }
 
 const result = add('Hello', ' buddy')
-console.log(result.split(' ')) 
-
+console.log(result.split(' '))  
 
 type UnKnownEmployee = Employee | Admin;
 
@@ -143,3 +142,12 @@ const errorbag: ErrorBag = {
   email: 'Not a valid email!',
   username: 'Must start with a capital character!'
 }
+
+
+const fetchedUserData = {
+  id: 'u1',
+  name:'Joe',
+  // job: {title: 'CEO', desc: "My Own Company"}
+}
+
+console.log(fetchedUserData?.job?.title)

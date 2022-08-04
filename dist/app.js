@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 const e1 = {
     name: "Joe",
     privileges: ["create-server"],
@@ -67,3 +68,8 @@ const errorbag = {
     email: 'Not a valid email!',
     username: 'Must start with a capital character!'
 };
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Joe',
+};
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
