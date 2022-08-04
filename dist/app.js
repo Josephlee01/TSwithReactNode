@@ -73,3 +73,9 @@ const fetchedUserData = {
     name: 'Joe',
 };
 console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+const userInput1 = '';
+const userInput2 = null;
+const storedData1 = userInput1 !== null && userInput1 !== void 0 ? userInput1 : 'DEFAULT';
+const storedData2 = userInput2 !== null && userInput2 !== void 0 ? userInput2 : 'DEFAULT';
+console.log(storedData1);
+console.log(storedData2);

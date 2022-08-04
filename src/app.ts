@@ -151,3 +151,12 @@ const fetchedUserData = {
 }
 
 console.log(fetchedUserData?.job?.title)
+
+const userInput1 = '';
+const userInput2 = null
+
+// userInput이 null or undefined 라면 'DEFAULT' 출력
+const storedData1 = userInput1 ?? 'DEFAULT'
+const storedData2 = userInput2 ?? 'DEFAULT'
+console.log(storedData1)
+console.log(storedData2)
