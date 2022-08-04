@@ -125,3 +125,13 @@ const userInputElement = document.getElementById(
 ) as HTMLInputElement;
 
 userInputElement.placeholder = "Input Value here";
+
+// 뭐가 올지는 모르지만 무조건 string이어야 함.
+interface ErrorBag {
+  [key: string]: string;
+}
+
+const errorbag: ErrorBag = {
+  email: 'Not a valid email!',
+  username: 'Must start with a capital character!'
+}

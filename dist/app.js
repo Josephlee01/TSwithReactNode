@@ -61,3 +61,7 @@ moveAnimal({
 const paragraph = (document.getElementById("message-output"));
 const userInputElement = document.getElementById("user-input");
 userInputElement.placeholder = "Input Value here";
+const errorbag = {
+    email: 'Not a valid email!',
+    username: 'Must start with a capital character!'
+};
