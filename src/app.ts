@@ -14,10 +14,10 @@ const promise: Promise<string> = new Promise((resolve, reject) => {
 
 promise.then((data) => data.split(""));
 
-function merge<T,U>(objA: T, objB: U) {
+function merge<T extends Object, U extends Object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
-const mergedObj = merge({ name: "Joe", hobbies: ['Sports'] }, { age: 35 });
-console.log(mergedObj.name)
-console.log(mergedObj.hobbies)
+const mergedObj = merge({ name: "Joe", hobbies: ["Sports"] }, { age: 35 });
+console.log(mergedObj.name);
+console.log(mergedObj.hobbies);

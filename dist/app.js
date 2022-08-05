@@ -12,6 +12,6 @@ promise.then((data) => data.split(""));
 function merge(objA, objB) {
     return Object.assign(objA, objB);
 }
-const mergedObj = merge({ name: "Joe", hobbies: ['Sports'] }, { age: 35 });
+const mergedObj = merge({ name: "Joe", hobbies: ["Sports"] }, { age: 35 });
 console.log(mergedObj.name);
 console.log(mergedObj.hobbies);
