@@ -25,4 +25,9 @@ function countAndDescribe(element) {
     }
     return [element, descText];
 }
-console.log(countAndDescribe(['Joseph', "Mike"]));
+console.log(countAndDescribe(["Joseph", "Mike"]));
+function extractAndConvert(obj, key) {
+    return obj[key];
+}
+const joe = extractAndConvert({ name: "Joe" }, "name");
+console.log(joe);
