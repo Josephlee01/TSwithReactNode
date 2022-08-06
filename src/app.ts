@@ -21,3 +21,19 @@ function merge<T extends Object, U extends Object>(objA: T, objB: U) {
 const mergedObj = merge({ name: "Joe", hobbies: ["Sports"] }, { age: 35 });
 console.log(mergedObj.name);
 console.log(mergedObj.hobbies);
+
+interface Length {
+  length: number;
+}
+
+function countAndDescribe<T extends Length>(element: T): [T, string] {
+  let descText = "Got no value.";
+  if (element.length === 1) {
+    descText = `Got 1 element.`;
+  } else if (element.length > 1) {
+    descText = `Got ${element.length} elements.`;
+  }
+  return [element, descText];
+}
+
+console.log(countAndDescribe(['Joseph', "Mike"]))
