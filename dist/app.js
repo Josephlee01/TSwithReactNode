@@ -31,3 +31,24 @@ function extractAndConvert(obj, key) {
 }
 const joe = extractAndConvert({ name: "Joe" }, "name");
 console.log(joe);
+class DataStorage {
+    constructor() {
+        this.data = [];
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    removeItem(item) {
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+    getItem() {
+        return [...this.data];
+    }
+}
+const textStorage = new DataStorage();
+textStorage.addItem('Joe');
+textStorage.addItem('Max');
+textStorage.addItem('Phil');
+textStorage.removeItem('Max');
+console.log(textStorage.getItem());
+const numberStorage = new DataStorage();
