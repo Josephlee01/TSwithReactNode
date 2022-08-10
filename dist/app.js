@@ -46,9 +46,17 @@ class DataStorage {
     }
 }
 const textStorage = new DataStorage();
-textStorage.addItem('Joe');
-textStorage.addItem('Max');
-textStorage.addItem('Phil');
-textStorage.removeItem('Max');
+textStorage.addItem("Joe");
+textStorage.addItem("Max");
+textStorage.addItem("Phil");
+textStorage.removeItem("Max");
 console.log(textStorage.getItem());
 const numberStorage = new DataStorage();
+function createCourseGoal(title, desc, date) {
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.desc = desc;
+    courseGoal.completeUntil = date;
+    return courseGoal;
+}
+const buddies = ['Joe', 'Sam'];

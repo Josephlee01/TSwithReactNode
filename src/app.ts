@@ -48,14 +48,14 @@ function extractAndConvert<T extends object, U extends keyof T>(
 const joe = extractAndConvert({ name: "Joe" }, "name");
 console.log(joe);
 
-class DataStorage<T extends number|string|boolean> {
+class DataStorage<T extends number | string | boolean> {
   private data: T[] = [];
 
-  addItem(item:T) {
+  addItem(item: T) {
     this.data.push(item);
   }
 
-  removeItem(item:T) {
+  removeItem(item: T) {
     this.data.splice(this.data.indexOf(item), 1);
   }
 
@@ -64,15 +64,32 @@ class DataStorage<T extends number|string|boolean> {
   }
 }
 
-
 const textStorage = new DataStorage<string>();
-textStorage.addItem('Joe')
-textStorage.addItem('Max')
-textStorage.addItem('Phil')
-textStorage.removeItem('Max')
-console.log(textStorage.getItem()) 
+textStorage.addItem("Joe");
+textStorage.addItem("Max");
+textStorage.addItem("Phil");
+textStorage.removeItem("Max");
+console.log(textStorage.getItem());
 
 const numberStorage = new DataStorage<number>();
 
 // 아래는 작동하지 않음.
 // const objStorage = new DataStorage<object>()
+
+interface CourseGoal {
+  title: string;
+  desc: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(title: string, desc: string, date: Date): CourseGoal {
+  let courseGoal:Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.desc = desc;
+  courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
+}
+
+const buddies: Readonly<string[]> = ['Joe', 'Sam'];
+// readonly에서는 추가 안됨.
+// buddies.push('John')
