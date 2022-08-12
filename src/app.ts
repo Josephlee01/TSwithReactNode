@@ -4,7 +4,7 @@
 //   console.log(constructor)
 // }
 
-// @Logger'
+// @Logger
 
 // Decorator Factory
 function Logger(logString: string) {
@@ -13,7 +13,20 @@ function Logger(logString: string) {
     console.log(constructor);
   };
 }
-@Logger("LOGGING - PERSON")
+
+function WithTemplate(template: string, hookId: string) {
+  return function (constructor: any) {
+    const hookElement = document.getElementById(hookId)
+    const p = new constructor()
+    if (hookElement) {
+      hookElement.innerHTML = template
+      // hookElement.querySelector('h1')!.textContent = p.name
+    }
+  }
+}
+
+// @Logger("LOGGING - PERSON")
+@WithTemplate('<h1>Greeting from Taipei...</h1>', 'app')
 class Person {
   name = "Joe";
 
