@@ -1,19 +1,27 @@
 // Decorator는 대문자로 시작함.
-function Logger(constructor: Function) {
-  console.log('Logging...')
-  console.log(constructor)
-}
+// function Logger(constructor: Function) {
+//   console.log('Logging...')
+//   console.log(constructor)
+// }
 
-@Logger
+// @Logger'
+
+// Decorator Factory
+function Logger(logString: string) {
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
+}
+@Logger("LOGGING - PERSON")
 class Person {
-  name = 'Joe'
+  name = "Joe";
 
   constructor() {
-    console.log('Creating person object...')
+    console.log("Creating person object...");
   }
- 
 }
 
-const person1 = new Person()
+const person1 = new Person();
 
-console.log(person1)
+console.log(person1);
