@@ -6,16 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 function Logger(logString) {
-    console.log('LOGGER FACTORY');
+    console.log("LOGGER FACTORY");
     return function (constructor) {
         console.log(logString);
         console.log(constructor);
     };
 }
 function WithTemplate(template, hookId) {
-    console.log('TEMPLATE FACTORY');
+    console.log("TEMPLATE FACTORY");
     return function (constructor) {
-        console.log('Rendering template');
+        console.log("Rendering template");
         const hookElement = document.getElementById(hookId);
         const p = new constructor();
         if (hookElement) {
@@ -30,8 +30,32 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    Logger('LOGGING...'),
-    WithTemplate('<h1>Greeting from Taipei...</h1>', 'app')
+    Logger("LOGGING..."),
+    WithTemplate("<h1>Greeting from Taipei...</h1>", "app")
 ], Person);
 const person1 = new Person();
 console.log(person1);
+function Log(target, propertyName) {
+    console.log("property Decorator");
+    console.log(target, propertyName);
+}
+class Product {
+    constructor(t, p) {
+        this.title = t;
+        this._price = p;
+    }
+    set price(val) {
+        if (val > 0) {
+            this._price = val;
+        }
+        else {
+            throw new Error("Invaild price: Price should be bigger than 0");
+        }
+    }
+    getPriceWithTax(tax) {
+        return this.price * (1 + tax);
+    }
+}
+__decorate([
+    Log
+], Product.prototype, "title", void 0);
